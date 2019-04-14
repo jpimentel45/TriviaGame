@@ -53,7 +53,7 @@ $(document).ready(function () {
             question: "Which child sang Survivor to bring Jesus into our hearts?",
             choices: ["Striperella👩‍🎤", "Dusty Diamondz💎", "Destiny's Child 😜", "Jeniffer Lopez🧟‍"],
             rightChoice: 2,
-            image: "assets/images/Destiny.gif",
+            image: "assets/images/Destiny.GIF",
             background: "<img src='assets/images/90cart.jpg'>"
         },
         {
@@ -74,7 +74,7 @@ $(document).ready(function () {
             question: "Which popular device was most confiscated during the late 2000's?",
             choices: ["iPod Classic", "Hot Cheetos", "iPhone X", "Lanterns"],
             rightChoice: 0,
-            image: "assets/images/iPod-Classic.gif",
+            image: "assets/images/iPod-Classic.GIF",
             background: "<img src='assets/images/90back.jpg'>"
         },
         {
