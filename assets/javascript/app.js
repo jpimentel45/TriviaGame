@@ -88,14 +88,12 @@ $(document).ready(function () {
 
     var rightAnswer = 0;
     var wrongAnswer = 0;
-    var unansweredCount = 0;
+    var unAnswered = 0;
     var time = 15;
     var intervalId;
     var userSelection = "";
     var running = false;
     var totalCount = trivia.length;
-    var chosenOne;
-    var triviaRand;
     var newArray = [];
     var placeHolder = [];
 
@@ -125,7 +123,7 @@ $(document).ready(function () {
 
         //stop time===0
         if (time === 0) {
-            unansweredCount++;
+            unAnswered++;
             stop();
             $("#choicesDiv").html("<p>You ran out of time 😂. The correct choice is: " + chosenOne.choices[chosenOne.rightChoice] + "</p>");
             hideImage();
@@ -140,7 +138,7 @@ $(document).ready(function () {
 
     //display trivia question, loop,  and display choices
     function displayTrivia() {
-        //generate random triviaRand in array
+        //generate random question in array
         triviaRand = Math.floor(Math.random() * trivia.length);
         chosenOne = trivia[triviaRand];
         //console.log(chosenOne);
@@ -166,7 +164,7 @@ $(document).ready(function () {
             //parseInt() function parses a string argument and returns an integer of the specified radix
             //locate array based on userChoice
             userSelection = parseInt($(this).attr("userChoices"));
-            console.log(userSelection);
+            //console.log(userSelection);
             //userSelection = right/wrong
             //(userSelection === chosenOne.choices[chosenOne.rightChoice]) <--try this
             //(userSelection === chosenOne.rightChoice)
@@ -176,7 +174,7 @@ $(document).ready(function () {
                 userSelection = "";
                 $("#choicesDiv").html("<p>Damn, boi 🐱‍🐉👌</p>");
                 hideImage();
-                console.log(rightAnswer);
+                //console.log(rightAnswer);
 
             } else {
                 stop();
@@ -184,7 +182,7 @@ $(document).ready(function () {
                 userSelection = "";
                 $("#choicesDiv").html("<p>🤔That is incorrect! The correct choice is: " + chosenOne.choices[chosenOne.rightChoice] + "</p>");
                 hideImage();
-                console.log(wrongAnswer);
+                //console.log(wrongAnswer);
             }
         })
     }
@@ -200,16 +198,16 @@ $(document).ready(function () {
             time = 15;
 
             //run the score screen if all questions looped through & answered
-            if ((wrongAnswer + rightAnswer + unansweredCount) === totalCount) {
+            if ((wrongAnswer + rightAnswer + unAnswered) === totalCount) {
                 $("#questionDiv").empty();
                 $("#questionDiv").html("<h3>🧐 Game Over!  Let's see your score 😱: </h3>");
                 $("#choicesDiv").append("<h4> 🤪 Correct: " + rightAnswer + "</h4>");
                 $("#choicesDiv").append("<h4> 🤬 Incorrect: " + wrongAnswer + "</h4>");
-                $("#choicesDiv").append("<h4> 🤯 Unanswered: " + unansweredCount + "</h4>");
+                $("#choicesDiv").append("<h4> 🤯 Unanswered: " + unAnswered + "</h4>");
                 $("#resetBtn").show();
                 rightAnswer = 0;
                 wrongAnswer = 0;
-                unansweredCount = 0;
+                unAnswered = 0;
 
             } else {
                 runTime();
